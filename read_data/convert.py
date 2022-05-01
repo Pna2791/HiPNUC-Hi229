@@ -23,7 +23,8 @@ def ch_rotz(theta):
 
 
 def euler2matrix(pitch, roll, yaw):
-    return ch_rotx(pitch).dot(ch_roty(roll)).dot(ch_rotz(yaw))
+    return ch_roty(roll).dot(ch_rotz(yaw)).dot(ch_rotx(pitch))
+
 
 
 
