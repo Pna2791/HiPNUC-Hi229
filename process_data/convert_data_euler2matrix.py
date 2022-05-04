@@ -2,18 +2,22 @@ import torch
 import numpy as np
 from read_data.convert import euler2matrix
 
-euler_path = "../data/dataFrame/data18_euler.pt"
-matrix_path = '../data/dataFrame/data18_matrix.pt'
+euler_path = "../data/dataFrame/data17_euler.pt"
+acc_path   = "../data/dataFrame/data17_acc.pt"
+
+matrix_path = '../data/dataFrame/data17_matrix.pt'
+acc_glo_path = "../data/dataFrame/data17_acc_glo.pt"
 
 euler = torch.load(euler_path)
-
+acc = torch.load(acc_path)
 
 matrices = []
 
-for frame in euler:
+for frame_eu, frame_acc in zip(euler, acc):
     sensors = []
-    for sensor in frame:
-        pitch, roll, yaw = int(sensor[0]), int(sensor[1]), int(sensor[2])
+    acc_global = []
+    for sensor_eu, sensor_acc in zip(frame_eu, frame_acc):
+        pitch, roll, yaw = int(sensor_eu[0]), int(sensor_eu[1]), int(sensor_eu[2])
         matrix = euler2matrix(pitch, roll, yaw)
         sensors.append(matrix)
     matrices.append(sensors)
