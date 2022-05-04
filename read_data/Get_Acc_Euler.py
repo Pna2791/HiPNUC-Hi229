@@ -69,7 +69,7 @@ if __name__ == '__main__':
         count += 1
         print(count)
 
-    name = 'data1' + '_'
+    name = '100align' + '_'
     Acc = np.array(Acc, dtype=np.float32)
     Accelerations = torch.tensor(Acc)
     torch.save(Accelerations, name + 'acc.pt')
