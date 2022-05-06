@@ -2,11 +2,12 @@ import serial
 import time
 
 
-# msg = 'AT+ODR=100'   # FPS
+# msg = 'AT+ODR=60'   # FPS
 # msg = 'AT+EOUT=1'   # OUTPUT
-msg = 'AT+INFO=HSI'    # INFO
+# msg = 'AT+INFO=HSI'    # INFO
+msg = 'AT+INFO'    # INFO
 # msg = 'AT+MODE=1'.       # 9 axis
-# msg = 'AT+SETPTL=90,A0,D0'      # 9 limited
+# msg = 'AT+SETPTL=90,A0,D1'      # 9 limited
 
 wait_time = 2
 

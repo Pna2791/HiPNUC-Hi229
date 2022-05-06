@@ -1,7 +1,13 @@
 import numpy as np
+import torch
 
 cos = np.cos
 sin = np.sin
+g_mean = 9.607779078213017
+
+a_zero = np.array([9.2650782e-03,
+                   1.5534239e-02,
+                   9.6034727e+00])
 
 
 def ch_rotx(theta):
@@ -25,9 +31,16 @@ def ch_rotz(theta):
                      [0, 0, 1]])
 
 
-def euler2matrix(pitch, roll, yaw):
+def euler2matrix(euler):
+    if torch.is_tensor(euler):
+        euler = euler.tolist()
+    pitch, roll, yaw = list(euler)
     return ch_rotz(yaw).dot(ch_roty(roll)).dot(ch_rotx(pitch))
 
 
-
-
+def sub_gravity(acc_local, matrix):
+    inverse_matrix = np.linalg.inv(matrix)
+    acc_global = matrix.dot(acc_local)
+    acc_global -= a_zero
+    return acc_local
+    return inverse_matrix.dot(acc_global)

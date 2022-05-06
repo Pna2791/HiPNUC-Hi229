@@ -2,8 +2,8 @@ import numpy as np
 import torch
 
 
+data_path = "../data."
 
-data_path = "D:/Downloads/TransPose-main/TransPose/data/datassmpl_file et_work/AMASS/"
 
 acc_path = data_path + "vacc.pt"
 rot_path = data_path + "vrot.pt"

@@ -8,12 +8,13 @@ a_g = 9.81/g
 count = 0
 if __name__ == '__main__':
 
-    HI221GW_A = hipnuc_module('COM23', 115200, './config.json')
+    HI221GW_A = hipnuc_module('COM20', 115200, './config.json')
 
-    t_end = time.time() + 2
+    t_end = time.time() + 20
     while t_end > time.time():
         count += 1
-        data = HI221GW_A.get_module_data()['euler']
+        # data = HI221GW_A.get_module_data()['euler']
+        data = HI221GW_A.get_module_data()
         # data = list(data)
         # acc = np.array(data)*a_g
 
@@ -21,3 +22,4 @@ if __name__ == '__main__':
 
         print(count)
     HI221GW_A.close()
+    exit()
