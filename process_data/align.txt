@@ -1,0 +1,5 @@
+X: trai - Y: tren - Z: truoc
+
+Tay trai:   Theo truc chinh
+Tay phai:   Theo truc toa do
+Chan trai:

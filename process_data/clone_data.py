@@ -1,5 +1,7 @@
 import numpy as np
 import torch
+from read_data.convert import euler2matrix
+
 
 length = 120
 
@@ -16,31 +18,6 @@ pi = torch.pi
 gama = 2*pi
 sin = np.sin
 cos = np.cos
-
-
-def ch_rotx(theta):
-    return np.array([[1, 0, 0],
-                     [0, cos(theta), -sin(theta)],
-                     [0, sin(theta), cos(theta)]])
-
-
-def ch_roty(theta):
-    return np.array([[cos(theta), 0, sin(theta)],
-                     [0, 1, 0],
-                     [-sin(theta), 0, cos(theta)]])
-
-
-def ch_rotz(theta):
-    return np.array([[cos(theta), -sin(theta), 0],
-                     [sin(theta), cos(theta), 0],
-                     [0, 0, 1]])
-
-
-def euler2matrix(euler):
-    if torch.is_tensor(euler):
-        euler = euler.tolist()
-    pitch, roll, yaw = list(euler)
-    return ch_rotz(yaw).dot(ch_roty(roll)).dot(ch_rotx(pitch))
 
 
 # các công thức tính theo thời gian
