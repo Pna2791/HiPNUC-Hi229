@@ -1,2 +1,1 @@
-$\sqrt{3}
-We have a vecter in global 
+$c^2-3$
