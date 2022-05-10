@@ -1,1 +1,1 @@
-$c^2-3$
+![img_1.png](img.png)
