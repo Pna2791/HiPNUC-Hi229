@@ -1,3 +1,6 @@
+euler[0, 0, 0] = Ox: north, Oy: west, Oz: up
+
+
 FPS: 60
 
 N_S: đặt cảm biến số 5(root) hướng bắc 10s
