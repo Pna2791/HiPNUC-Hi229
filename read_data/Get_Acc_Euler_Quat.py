@@ -56,6 +56,13 @@ def get_data_frame(sensors):
         euler = np.array(list(euler))
         euler_list.append(euler)
 
+
+        euler = dict_data[i]['euler'][0]
+        euler = np.array([euler['Pitch'], euler['Roll'], euler['Yaw']])
+        euler_list.append(euler)
+
+
+
         quat = dict_data[i]['quat'][0].values()
         quat = np.array(list(quat))
         quat_list.append(quat)
