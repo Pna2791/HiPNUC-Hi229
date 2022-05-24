@@ -56,7 +56,7 @@ if __name__ == '__main__':
         euler = [euler['Pitch'], euler['Roll'], euler['Yaw']]
 
         matrix = euler2matrix(euler)
-
+        matrix = np.linalg.inv(matrix)
         print(matrix.dot(acc))
 
         print(count)
