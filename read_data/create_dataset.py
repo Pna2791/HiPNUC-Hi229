@@ -79,7 +79,7 @@ def T_Pose(sensors):
         remain = round(t_out - time.time())
         print('\rT-pose stop after %d seconds.' % remain, end='')
 
-        acc, quat = get_data_frame(Sensors)
+        acc, quat = get_data_frame(sensors)
         acc_mean += acc
         quat_mean += quat
         count += 1
@@ -89,9 +89,13 @@ def T_Pose(sensors):
     matrix_T = np.zeros((6, 3, 3))
     acc_T = np.zeros((6, 3))
 
+
+    get_virtual(D_virtual, quat_mean[4])
+
     for i, (acc, quat) in enumerate(zip(acc_mean, quat_mean)):
         matrix = quat2matrix(quat)
         acc_T[i] = matrix.dot(acc)
+
         matrix = D_virtual.dot(matrix)
         matrix_T[i] = torch.linalg.inv(matrix)
 
