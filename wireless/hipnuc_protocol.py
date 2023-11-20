@@ -342,7 +342,7 @@ def _parse_data_packet_0x62(data_section:list,node_num = None):
     pos = 0
 
     gwid = data_section[0]
-    gwid_dic = {
+    id_dic = {
             "":gwid
         }
     gwid_temp_list.append(id_dic)
@@ -662,7 +662,7 @@ def sample_rate_timer_cb(sample_timer):
 
     SampleRate = SamplesReceived - prevSamplesReceived
     prevSamplesReceived = SamplesReceived
-    # print("fps：",SampleRate,datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))
+    # print("每秒幀率：",SampleRate,datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))
 
     if sample_rate_alive_flag == True:
         sample_timer = threading.Timer(1.00, sample_rate_timer_cb,args=(sample_timer,))
@@ -749,7 +749,6 @@ def extraction_information_from_frame(frame_list:list, inf_fifo,report_datatype:
     pos = 0
 
     data_frame_list = frame_list[6:]
-
     
     #遍歷解析數據段內包含的數據
     while len(data_frame_list) > 0:
