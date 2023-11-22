@@ -15,8 +15,11 @@ def show(mess):
 def save_file(data):
     current_datetime = datetime.now()
     timestamp = current_datetime.strftime("%Y-%m-%d %H-%M")
-    timestamp = "root"
+    timestamp = "root1"
     name = f"../Hi229/data/AnhPN/{timestamp}.pt"
+    # file = open("../Hi229/data/AnhPN/last.txt", "w")
+    # file.write(name)
+    # file.close()
 
     torch.save(data, name)
     print()
@@ -26,16 +29,16 @@ def extract_data(data):
     acc = data['acc'][0]
     acc = np.array([acc['X'], acc['Y'], acc['Z']], dtype=np.float32)
     quat = data['quat'][0]
-    quat = np.array([quat['W'],  quat['X'],  quat['Y'],  quat['Z']], dtype=np.float32)
+    quat = np.array([quat['X'],  quat['Y'],  quat['Z'], quat['W']], dtype=np.float32)
     return acc, quat
 
 
 if __name__ == '__main__':
     HI221GW_A = hipnuc_module('COM5', 115200, './config.json')
     print("starting")
-    # for i in range(-3, 0):
-    #     show(f"Start in {i} seconds")
-    #     time.sleep(1)
+    for i in range(-3, 0):
+        show(f"Start in {i} seconds")
+        time.sleep(1)
 
     print("Recording")
     data_pack = []
@@ -47,7 +50,9 @@ if __name__ == '__main__':
         data_pack.append((acc, quat))
 
         show(f"{i+1} / {frames}")
-        if i == 240:
+        if i == 0:
+            print(acc, quat)
+        if i == 300:
             print()
 
     save_file(data_pack)
